@@ -1,0 +1,73 @@
+<!doctype html>
+  <html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['gantt']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task ID');
+        data.addColumn('string', 'Task Name');
+        data.addColumn('string', 'Resource');
+        data.addColumn('date', 'Start Date');
+        data.addColumn('date', 'End Date');
+        data.addColumn('number', 'Duration');
+        data.addColumn('number', 'Percent Complete');
+        data.addColumn('string', 'Dependencies');
+
+		data.addRows([
+		['01', 'Revisión de la documentación proporcionada por TAG ingenieros', 'Doc',
+		new Date(2019, 1, 1), new Date(2019, 1, 2), null, 0, null],
+		['02', 'Revisión de documentación de Speedway Revolution', 'Doc',
+		new Date(2019, 1, 1), new Date(2019, 1, 2), null, 0, null],
+		['03', 'Elaboración del protocolo de comunicación ', 'Com',
+		new Date(2019, 1, 2), new Date(2019, 1, 5), null, 0, null],
+
+		['04', 'Conexión entre el sistema Speedway y una PC (lectura y escritura)', 'Com',
+		new Date(2019, 1, 5), new Date(2019, 1, 9), null, 0, null],
+		['05', 'Conexión del módulo Speedway con el microcontrolador Raspberry', 'Com',
+		new Date(2019, 1, 5), new Date(2019, 1, 9), null, 0, null],
+		['06', 'Diseño de la arquitectura del programa', 'Sw',
+		new Date(2019, 1, 9), new Date(2019, 1, 19), null, 0, null],
+		['07', 'Desarrollo del software raspberry con el sensor Speedway Revolution', 'Sw',
+		new Date(2019, 1, 19), new Date(2019, 2, 16), null, 0, null],
+
+		['08', 'Prueba de funciones en el sistema de sensor con el tapete', 'Test',
+		new Date(2019, 2, 16), new Date(2019, 2, 21), null, 0, null],
+		['09', 'Prueba del nuevo sistema de conexiones', 'Test',
+		new Date(2019, 2, 16), new Date(2019, 2, 21), null, 0, null],
+		['10', 'Diseño de la interfaz grafica', 'Sw',
+		new Date(2019, 2, 21), new Date(2019, 2, 28), null, 0, null],
+
+		['11', 'Desarrollo de la API del sistema', 'Sw',
+		new Date(2019, 2, 25), new Date(2019, 2, 28), null, 0, null],
+		['12', 'Diseño del CAD para el ensamble del sistema de visualización.', 'CADCAM',
+		new Date(2019, 2, 27), new Date(2019, 2, 28), null, 0, null],
+		['13', 'Manufactura del sistema de procesamiento (empaquetado)', 'CADCAM',
+        new Date(2019, 2, 28), new Date(2019, 3, 2), null, 0, null],
+        ['14', 'Pruebas del sistema completo, interacción interfaz-usuario.', 'Test',
+		new Date(2019, 3, 2), new Date(2019, 3, 5), null, 0, null]
+		]);
+
+        var options = {
+          height: 500,
+          gantt: {
+            trackHeight: 30,
+            labelMaxWidth: 500
+          }
+        };
+
+        var chart = new google.visualization.Gantt(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+      <br>
+    <div id="chart_div"></div>
+  </body>
+  </html>
